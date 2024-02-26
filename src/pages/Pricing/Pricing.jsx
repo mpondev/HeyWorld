@@ -21,7 +21,7 @@ function Pricing() {
           </p>
         </div>
 
-        <img src="img-2.webp" alt="Town with mounatins in the background" />
+        <img src="img-2.webp" alt="Skyscrapper" />
       </section>
     </main>
   );
