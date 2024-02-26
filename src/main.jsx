@@ -13,6 +13,8 @@ import Pricing from './pages/Pricing/Pricing.jsx';
 import Product from './pages/Product/Product.jsx';
 import PageNotFound from './pages/PageNotFound/PageNotFound.jsx';
 
+import './index.css';
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
