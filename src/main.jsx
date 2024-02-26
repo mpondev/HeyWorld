@@ -9,9 +9,10 @@ import {
 
 import App from './App.jsx';
 import Homepage from './pages/Homepage/Homepage.jsx';
+import Login from './pages/Login/Login.jsx';
+import PageNotFound from './pages/PageNotFound/PageNotFound.jsx';
 import Pricing from './pages/Pricing/Pricing.jsx';
 import Product from './pages/Product/Product.jsx';
-import PageNotFound from './pages/PageNotFound/PageNotFound.jsx';
 
 import './index.css';
 
@@ -21,6 +22,7 @@ const router = createBrowserRouter(
       <Route index={true} path="/" element={<Homepage />} />
       <Route path="pricing" element={<Pricing />} />
       <Route path="product" element={<Product />} />
+      <Route path="login" element={<Login />} />
       <Route path="*" element={<PageNotFound />} />
     </Route>
   )
