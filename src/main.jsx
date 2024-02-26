@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom';
 
 import App from './App.jsx';
+import AppLayout from './layout/AppLayout.jsx';
 import Homepage from './pages/Homepage/Homepage.jsx';
 import Login from './pages/Login/Login.jsx';
 import PageNotFound from './pages/PageNotFound/PageNotFound.jsx';
@@ -23,6 +24,7 @@ const router = createBrowserRouter(
       <Route path="pricing" element={<Pricing />} />
       <Route path="product" element={<Product />} />
       <Route path="login" element={<Login />} />
+      <Route path="app" element={<AppLayout />} />
       <Route path="*" element={<PageNotFound />} />
     </Route>
   )
