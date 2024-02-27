@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import CityItem from '../CityItem/CityItem.jsx';
 import Message from '../Message/Message.jsx';
 import Spinner from '../Spinner/Spinner.jsx';
@@ -19,5 +21,10 @@ function CityList({ cities, isLoading }) {
     </ul>
   );
 }
+
+CityList.propTypes = {
+  cities: PropTypes.array,
+  isLoading: PropTypes.bool,
+};
 
 export default CityList;
