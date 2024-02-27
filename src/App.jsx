@@ -8,6 +8,7 @@ import PageNotFound from './pages/PageNotFound/PageNotFound.jsx';
 import Pricing from './pages/Pricing/Pricing.jsx';
 import Product from './pages/Product/Product.jsx';
 
+import City from './components/City/City.jsx';
 import CityList from './components/CityList/CityList.jsx';
 import CountryList from './components/CountryList/CountryList.jsx';
 
@@ -49,6 +50,7 @@ function App() {
             path="cities"
             element={<CityList cities={cities} isLoading={isLoading} />}
           />
+          <Route path="cities/:id" element={<City />} />
           <Route
             path="countries"
             element={<CountryList cities={cities} isLoading={isLoading} />}
