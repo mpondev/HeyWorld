@@ -12,7 +12,7 @@ function CountryItem({ country }) {
 }
 
 CountryItem.propTypes = {
-  country: PropTypes.array,
+  country: PropTypes.object,
 };
 
 export default CountryItem;
