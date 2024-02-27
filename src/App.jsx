@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
 import AppLayout from './layout/AppLayout.jsx';
