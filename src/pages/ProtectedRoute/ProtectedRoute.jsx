@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/FakeAuthContext';
+import { useAuth } from '../../context/FakeAuthContext.jsx';
 
 function ProtectedRoute({ children }) {
   const { isAuthenticated } = useAuth();
@@ -16,7 +16,7 @@ function ProtectedRoute({ children }) {
 }
 
 ProtectedRoute.propTypes = {
-  children: PropTypes.array,
+  children: PropTypes.object,
 };
 
 export default ProtectedRoute;
