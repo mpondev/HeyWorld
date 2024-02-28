@@ -9,6 +9,7 @@ import Login from './pages/Login/Login.jsx';
 import PageNotFound from './pages/PageNotFound/PageNotFound.jsx';
 import Pricing from './pages/Pricing/Pricing.jsx';
 import Product from './pages/Product/Product.jsx';
+import ProtectedRoute from './pages/ProtectedRoute/ProtectedRoute.jsx';
 
 import City from './components/City/City.jsx';
 import CityList from './components/CityList/CityList.jsx';
@@ -25,7 +26,14 @@ function App() {
             <Route path="product" element={<Product />} />
             <Route path="pricing" element={<Pricing />} />
             <Route path="login" element={<Login />} />
-            <Route path="app" element={<AppLayout />}>
+            <Route
+              path="app"
+              element={
+                <ProtectedRoute>
+                  <AppLayout />
+                </ProtectedRoute>
+              }
+            >
               <Route index element={<Navigate replace to="cities" />} />
               <Route path="cities" element={<CityList />} />
               <Route path="cities/:id" element={<City />} />
