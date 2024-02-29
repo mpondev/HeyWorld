@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 
 import PageNav from '../../components/PageNav/PageNav.jsx';
+
 import styles from './Homepage.module.css';
 
 function Homepage() {

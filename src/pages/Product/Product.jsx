@@ -1,4 +1,5 @@
 import PageNav from '../../components/PageNav/PageNav.jsx';
+
 import styles from './Product.module.css';
 
 function Product() {
