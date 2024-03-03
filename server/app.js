@@ -1,14 +1,17 @@
 const fs = require('fs');
 const express = require('express');
+const morgan = require('morgan');
 
 const app = express();
 
 // MIDDLEWARES
+app.use(morgan('dev'));
 app.use(express.json());
 // app.use(express.static(`${__dirname}/public`));
 
 let cities = JSON.parse(fs.readFileSync(`${__dirname}/data/cities.json`));
 
+// ROUTE HANDLERS
 // GET all cities
 const getAllCities = (req, res) => {
   res.status(200).json({
@@ -99,17 +102,59 @@ const deleteCity = (req, res) => {
   });
 };
 
+// Functionality not implemented by now (only handlers)
+const getAllUsers = (req, res) => {
+  res.status(500).json({
+    status: 'error',
+    message: 'This route is not yet defined!',
+  });
+};
+
+const getUser = (req, res) => {
+  res.status(500).json({
+    status: 'error',
+    message: 'This route is not yet defined!',
+  });
+};
+
+const createUser = (req, res) => {
+  res.status(500).json({
+    status: 'error',
+    message: 'This route is not yet defined!',
+  });
+};
+const updateUser = (req, res) => {
+  res.status(500).json({
+    status: 'error',
+    message: 'This route is not yet defined!',
+  });
+};
+const deleteUser = (req, res) => {
+  res.status(500).json({
+    status: 'error',
+    message: 'This route is not yet defined!',
+  });
+};
+
 // app.get('/api/v1/cities', getAllCities);
 // app.get('/api/v1/cities/:id', getCity);
 // app.post('/api/v1/cities', createCity);
 // app.patch('/api/v1/cities/:id', updateCity);
 // app.delete('/api/v1/cities/:id', deleteCity);
 
+// ROUTES
 app.route('/api/v1/cities').get(getAllCities).post(createCity);
 app
   .route('/api/v1/cities/:id')
   .get(getCity)
   .patch(updateCity)
   .delete(deleteCity);
+
+app.route('/api/v1/users').get(getAllUsers).post(createUser);
+app
+  .route('/api/v1/users/:id')
+  .get(getUser)
+  .patch(updateUser)
+  .delete(deleteUser);
 
 module.exports = app;
