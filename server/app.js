@@ -9,7 +9,7 @@ const app = express();
 // MIDDLEWARES
 app.use(morgan('dev'));
 app.use(express.json());
-// app.use(express.static(`${__dirname}/public`));
+app.use(express.static(`${__dirname}/public`));
 
 // ROUTES
 app.use('/api/v1/cities', cityRouter);
