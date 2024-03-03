@@ -54,4 +54,23 @@ app.post('/api/v1/cities', (req, res) => {
   });
 });
 
+app.patch('/api/v1/cities/:id', (req, res) => {
+  const id = req.params.id * 1;
+  const city = cities.find(el => el.id === id);
+
+  if (!city) {
+    return res.status(404).json({
+      status: 'fail',
+      message: 'Invalid ID',
+    });
+  }
+
+  res.status(200).json({
+    status: 'success',
+    data: {
+      city: '<Updated city here...>',
+    },
+  });
+});
+
 module.exports = app;
