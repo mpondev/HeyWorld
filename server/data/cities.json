@@ -1,76 +1,56 @@
-{
-  "cities": [
-    {
-      "cityName": "Lisbon",
-      "country": "Portugal",
-      "emoji": "🇵🇹",
-      "date": "2027-10-31T15:59:59.138Z",
-      "notes": "My favorite city so far!",
-      "position": {
-        "lat": 38.727881642324164,
-        "lng": -9.140900099907554
-      },
-      "id": 73930385
-    },
-    {
-      "cityName": "Madrid",
-      "country": "Spain",
-      "emoji": "🇪🇸",
-      "date": "2027-07-15T08:22:53.976Z",
-      "notes": "",
-      "position": {
-        "lat": 40.46635901755316,
-        "lng": -3.7133789062500004
-      },
-      "id": 17806751
-    },
-    {
-      "cityName": "Berlin",
-      "country": "Germany",
-      "emoji": "🇩🇪",
-      "date": "2027-02-12T09:24:11.863Z",
-      "notes": "Amazing 😃",
-      "position": {
-        "lat": 52.53586782505711,
-        "lng": 13.376933665713324
-      },
-      "id": 98443197
-    },
-    {
-      "cityName": "Valencia",
-      "country": "Spain",
-      "emoji": "🇪🇸",
-      "date": "2023-06-29T16:24:23.205Z",
-      "notes": "",
-      "position": {
-        "lat": "39.46641460192054",
-        "lng": "-0.37628173828125006"
-      },
-      "id": 98443198
-    },
-    {
-      "cityName": "Chamonix-Mont-Blanc",
-      "country": "France",
-      "emoji": "🇫🇷",
-      "date": "2023-06-29T16:30:58.370Z",
-      "notes": "",
-      "position": {
-        "lat": "45.92416974047116",
-        "lng": "6.872463226318359"
-      },
-      "id": 98443200
-    },
-    {
-      "cityName": "Kathmandu",
-      "country": "Nepal",
-      "emoji": "🇳🇵",
-      "date": "2023-06-29T16:42:44.415Z",
-      "notes": "",
-      "position": {
-        "lat": "27.70389563411532",
-        "lng": "85.31810760498048"
-      },
-      "id": 98443202
-    }
-  ]
-}
+[
+  {
+    "cityName": "Lisbon",
+    "country": "Portugal",
+    "emoji": "🇵🇹",
+    "date": "2027-10-31T15:59:59.138Z",
+    "notes": "My favorite city so far!",
+    "position": { "lat": 38.727881642324164, "lng": -9.140900099907554 },
+    "id": 73930385
+  },
+  {
+    "cityName": "Madrid",
+    "country": "Spain",
+    "emoji": "🇪🇸",
+    "date": "2027-07-15T08:22:53.976Z",
+    "notes": "",
+    "position": { "lat": 40.46635901755316, "lng": -3.7133789062500004 },
+    "id": 17806751
+  },
+  {
+    "cityName": "Berlin",
+    "country": "Germany",
+    "emoji": "🇩🇪",
+    "date": "2027-02-12T09:24:11.863Z",
+    "notes": "Amazing 😃",
+    "position": { "lat": 52.53586782505711, "lng": 13.376933665713324 },
+    "id": 98443197
+  },
+  {
+    "cityName": "Valencia",
+    "country": "Spain",
+    "emoji": "🇪🇸",
+    "date": "2023-06-29T16:24:23.205Z",
+    "notes": "",
+    "position": { "lat": "39.46641460192054", "lng": "-0.37628173828125006" },
+    "id": 98443198
+  },
+  {
+    "cityName": "Chamonix-Mont-Blanc",
+    "country": "France",
+    "emoji": "🇫🇷",
+    "date": "2023-06-29T16:30:58.370Z",
+    "notes": "",
+    "position": { "lat": "45.92416974047116", "lng": "6.872463226318359" },
+    "id": 98443200
+  },
+  {
+    "cityName": "Kathmandu",
+    "country": "Nepal",
+    "emoji": "🇳🇵",
+    "date": "2023-06-29T16:42:44.415Z",
+    "notes": "",
+    "position": { "lat": "27.70389563411532", "lng": "85.31810760498048" },
+    "id": 98443202
+  }
+]
