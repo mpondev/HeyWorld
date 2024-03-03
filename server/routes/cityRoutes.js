@@ -8,7 +8,7 @@ router.param('id', cityController.checkId);
 router
   .route('/')
   .get(cityController.getAllCities)
-  .post(cityController.createCity);
+  .post(cityController.checkBody, cityController.createCity);
 router
   .route('/:id')
   .get(cityController.getCity)

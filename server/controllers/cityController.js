@@ -17,6 +17,16 @@ exports.checkId = (req, res, next, val) => {
   next();
 };
 
+exports.checkBody = (req, res, next) => {
+  if (!req.body.cityName || !req.body.country) {
+    return res.status(400).json({
+      status: 'fail',
+      message: 'Missing city name or country',
+    });
+    next();
+  }
+};
+
 exports.getAllCities = (req, res) => {
   res.status(200).json({
     status: 'success',
