@@ -143,18 +143,16 @@ const deleteUser = (req, res) => {
 // app.delete('/api/v1/cities/:id', deleteCity);
 
 // ROUTES
-app.route('/api/v1/cities').get(getAllCities).post(createCity);
-app
-  .route('/api/v1/cities/:id')
-  .get(getCity)
-  .patch(updateCity)
-  .delete(deleteCity);
+const cityRouter = express.Router();
+const userRouter = express.Router();
 
-app.route('/api/v1/users').get(getAllUsers).post(createUser);
-app
-  .route('/api/v1/users/:id')
-  .get(getUser)
-  .patch(updateUser)
-  .delete(deleteUser);
+cityRouter.route('/').get(getAllCities).post(createCity);
+cityRouter.route('/:id').get(getCity).patch(updateCity).delete(deleteCity);
+
+userRouter.route('/').get(getAllUsers).post(createUser);
+userRouter.route('/:id').get(getUser).patch(updateUser).delete(deleteUser);
+
+app.use('/api/v1/cities', cityRouter);
+app.use('/api/v1/users', userRouter);
 
 module.exports = app;
