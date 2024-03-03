@@ -3,6 +3,8 @@ const cityController = require('../controllers/cityController.js');
 
 const router = express.Router();
 
+router.param('id', cityController.checkId);
+
 router
   .route('/')
   .get(cityController.getAllCities)

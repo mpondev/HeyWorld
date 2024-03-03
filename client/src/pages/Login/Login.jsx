@@ -36,6 +36,7 @@ export default function Login() {
             id="email"
             onChange={e => setEmail(e.target.value)}
             value={email}
+            autoComplete="off"
           />
         </div>
 
