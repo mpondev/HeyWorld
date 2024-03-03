@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 // app.use(express.static(`${__dirname}/public`));
 
-const cities = JSON.parse(fs.readFileSync(`${__dirname}/data/cities.json`));
+let cities = JSON.parse(fs.readFileSync(`${__dirname}/data/cities.json`));
 
 app.get('/api/v1/cities', (req, res) => {
   res.status(200).json({
@@ -70,6 +70,27 @@ app.patch('/api/v1/cities/:id', (req, res) => {
     data: {
       city: '<Updated city here...>',
     },
+  });
+});
+
+app.delete('/api/v1/cities/:id', (req, res) => {
+  const id = req.params.id * 1;
+  const city = cities.find(el => el.id === id);
+
+  if (!city) {
+    return res.status(404).json({
+      status: 'fail',
+      message: 'Invalid ID',
+    });
+  }
+
+  cities = cities.filter(city => city.id !== id);
+
+  fs.writeFile(`${__dirname}/data/cities.json`, JSON.stringify(cities), err => {
+    res.status(204).json({
+      status: 'success',
+      data: null,
+    });
   });
 });
 
