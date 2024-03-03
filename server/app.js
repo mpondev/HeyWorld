@@ -9,7 +9,8 @@ app.use(express.json());
 
 let cities = JSON.parse(fs.readFileSync(`${__dirname}/data/cities.json`));
 
-app.get('/api/v1/cities', (req, res) => {
+// GET all cities
+const getAllCities = (req, res) => {
   res.status(200).json({
     status: 'success',
     results: cities.length,
@@ -17,9 +18,10 @@ app.get('/api/v1/cities', (req, res) => {
       cities,
     },
   });
-});
+};
 
-app.get('/api/v1/cities/:id', (req, res) => {
+// GET a single city
+const getCity = (req, res) => {
   const id = req.params.id * 1;
   const city = cities.find(el => el.id === id);
 
@@ -36,9 +38,10 @@ app.get('/api/v1/cities/:id', (req, res) => {
       city,
     },
   });
-});
+};
 
-app.post('/api/v1/cities', (req, res) => {
+// CREATE a new city
+const createCity = (req, res) => {
   const newID = cities[cities.length - 1].id + 1;
   const newCity = Object.assign({ id: newID }, req.body);
 
@@ -52,9 +55,10 @@ app.post('/api/v1/cities', (req, res) => {
       },
     });
   });
-});
+};
 
-app.patch('/api/v1/cities/:id', (req, res) => {
+// UPDATE a city (not implemented by now)
+const updateCity = (req, res) => {
   const id = req.params.id * 1;
   const city = cities.find(el => el.id === id);
 
@@ -71,9 +75,10 @@ app.patch('/api/v1/cities/:id', (req, res) => {
       city: '<Updated city here...>',
     },
   });
-});
+};
 
-app.delete('/api/v1/cities/:id', (req, res) => {
+// DELETE a city
+const deleteCity = (req, res) => {
   const id = req.params.id * 1;
   const city = cities.find(el => el.id === id);
 
@@ -92,6 +97,19 @@ app.delete('/api/v1/cities/:id', (req, res) => {
       data: null,
     });
   });
-});
+};
+
+// app.get('/api/v1/cities', getAllCities);
+// app.get('/api/v1/cities/:id', getCity);
+// app.post('/api/v1/cities', createCity);
+// app.patch('/api/v1/cities/:id', updateCity);
+// app.delete('/api/v1/cities/:id', deleteCity);
+
+app.route('/api/v1/cities').get(getAllCities).post(createCity);
+app
+  .route('/api/v1/cities/:id')
+  .get(getCity)
+  .patch(updateCity)
+  .delete(deleteCity);
 
 module.exports = app;
