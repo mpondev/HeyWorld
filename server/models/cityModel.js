@@ -4,6 +4,7 @@ const citySchema = new mongoose.Schema({
   cityName: {
     type: String,
     unique: true,
+    required: [true, 'A city must have a name'],
   },
   country: String,
   emoji: String,
