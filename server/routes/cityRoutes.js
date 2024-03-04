@@ -3,12 +3,12 @@ const cityController = require('../controllers/cityController.js');
 
 const router = express.Router();
 
-router.param('id', cityController.checkId);
+// router.param('id', cityController.checkId);
 
 router
   .route('/')
   .get(cityController.getAllCities)
-  .post(cityController.checkBody, cityController.createCity);
+  .post(cityController.createCity);
 router
   .route('/:id')
   .get(cityController.getCity)
