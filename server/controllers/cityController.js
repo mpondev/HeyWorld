@@ -1,52 +1,39 @@
-// const fs = require('fs');
 const City = require('./../models/cityModel.js');
 
-// let cities = JSON.parse(fs.readFileSync(`${__dirname}/../data/cities.json`));
-
-// exports.checkId = (req, res, next, val) => {
-//   console.log(`City ID is: ${val}`);
-//   const id = req.params.id * 1;
-//   const city = cities.find(el => el.id === id);
-
-//   if (!city) {
-//     return res.status(404).json({
-//       status: 'fail',
-//       message: 'Invalid ID',
-//     });
-//   }
-
-//   next();
-// };
-
-// exports.checkBody = (req, res, next) => {
-//   if (!req.body.cityName || !req.body.country) {
-//     return res.status(400).json({
-//       status: 'fail',
-//       message: 'Missing city name or country',
-//     });
-//     next();
-//   }
-// };
-
-exports.getAllCities = (req, res) => {
-  // res.status(200).json({
-  //   status: 'success',
-  //   results: cities.length,
-  //   data: {
-  //     cities,
-  //   },
-  // });
+exports.getAllCities = async (req, res) => {
+  try {
+    const cities = await City.find();
+    res.status(200).json({
+      status: 'success',
+      results: cities.length,
+      data: {
+        cities,
+      },
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: 'fail',
+      message: err,
+    });
+  }
 };
 
-exports.getCity = (req, res) => {
-  // const id = req.params.id * 1;
-  // const city = cities.find(el => el.id === id);
-  // res.status(200).json({
-  //   status: 'success',
-  //   data: {
-  //     city,
-  //   },
-  // });
+exports.getCity = async (req, res) => {
+  try {
+    // City.findOne({ _id: req.params.id })
+    const city = await City.findById(req.params.id);
+    res.status(200).json({
+      status: 'success',
+      data: {
+        city,
+      },
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: 'fail',
+      message: err,
+    });
+  }
 };
 
 exports.createCity = async (req, res) => {
@@ -61,7 +48,7 @@ exports.createCity = async (req, res) => {
   } catch (err) {
     res.status(400).json({
       status: 'fail',
-      message: 'Invalid data sent!',
+      message: err,
     });
   }
 };
