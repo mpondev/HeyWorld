@@ -1,4 +1,5 @@
 const City = require('./../models/cityModel.js');
+const APIFeatures = require('./../utils/apiFeatures.js');
 
 exports.aliasTopWestern = (req, res, next) => {
   req.query.limit = '3';
@@ -9,50 +10,13 @@ exports.aliasTopWestern = (req, res, next) => {
 
 exports.getAllCities = async (req, res) => {
   try {
-    // Build query
-    // Filtering (?field=value)
-    const queryObj = { ...req.query };
-    const excludedFields = ['page', 'sort', 'limit', 'fields'];
-    excludedFields.forEach(el => delete queryObj[el]);
-
-    // Advanced filtering
-    let queryStr = JSON.stringify(queryObj);
-    queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, match => `$${match}`);
-
-    let query = City.find(JSON.parse(queryStr));
-
-    //Sorting (?sort=-field1,field2)
-    if (req.query.sort) {
-      const sortBy = req.query.sort.split(',').join(' ');
-      query = query.sort(sortBy);
-    } else {
-      // default sort
-      query = query.sort('-date');
-    }
-
-    // Field limiting (projecting) (?fields=field1,field2)
-    if (req.query.fields) {
-      const fields = req.query.fields.split(',').join(' ');
-      query = query.select(fields);
-    } else {
-      // default field limiting
-      query = query.select('-__v');
-    }
-
-    // Pagination (?page=3&limit=10)
-    const page = req.query.page * 1 || 1;
-    const limit = req.query.limit * 1 || 100;
-    const skip = (page - 1) * limit;
-
-    query = query.skip(skip).limit(limit);
-
-    if (req.query.page) {
-      const numCities = await City.countDocuments();
-      if (skip >= numCities) throw new Error('This page does not exist');
-    }
-
     // Execute query
-    const cities = await query;
+    const features = new APIFeatures(City.find(), req.query)
+      .filter()
+      .sort()
+      .limitFields()
+      .paginate();
+    const cities = await features.query;
 
     // Send response
     res.status(200).json({
