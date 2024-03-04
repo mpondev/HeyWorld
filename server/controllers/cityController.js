@@ -2,7 +2,22 @@ const City = require('./../models/cityModel.js');
 
 exports.getAllCities = async (req, res) => {
   try {
-    const cities = await City.find();
+    // Build query
+    // Filtering
+    const queryObj = { ...req.query };
+    const excludedFields = ['page', 'sort', 'limit', 'fields'];
+    excludedFields.forEach(el => delete queryObj[el]);
+
+    // Advanced filtering
+    let queryStr = JSON.stringify(queryObj);
+    queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, match => `$${match}`);
+
+    const query = City.find(JSON.parse(queryStr));
+
+    // Execute query
+    const cities = await query;
+
+    // Send response
     res.status(200).json({
       status: 'success',
       results: cities.length,
