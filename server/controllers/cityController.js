@@ -12,7 +12,25 @@ exports.getAllCities = async (req, res) => {
     let queryStr = JSON.stringify(queryObj);
     queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, match => `$${match}`);
 
-    const query = City.find(JSON.parse(queryStr));
+    let query = City.find(JSON.parse(queryStr));
+
+    //Sorting
+    if (req.query.sort) {
+      const sortBy = req.query.sort.split(',').join(' ');
+      query = query.sort(sortBy);
+    } else {
+      // default sort
+      query = query.sort('-date');
+    }
+
+    // Field limiting (projecting)
+    if (req.query.fields) {
+      const fields = req.query.fields.split(',').join(' ');
+      query = query.select(fields);
+    } else {
+      // default field limiting
+      query = query.select('-__v');
+    }
 
     // Execute query
     const cities = await query;
