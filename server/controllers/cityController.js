@@ -29,7 +29,7 @@ exports.getAllCities = catchAsync(async (req, res, next) => {
 });
 
 exports.getCity = catchAsync(async (req, res, next) => {
-  // City.findOne({ _id: req.params.id })
+  // const city = await City.findOne({ _id: req.params.id })
   const city = await City.findById(req.params.id);
 
   if (!city) {

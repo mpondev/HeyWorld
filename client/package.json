@@ -1,7 +1,9 @@
 {
   "name": "heyworld",
+  "homepage": "https://heyworld.mpondev.com",
   "private": true,
   "version": "1.0.1",
+  "description": "App for tracking all the cities you visit",
   "type": "module",
   "scripts": {
     "dev": "vite",

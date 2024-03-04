@@ -8,7 +8,12 @@ import {
   useReducer,
 } from 'react';
 
-const BASE_URL = 'http://localhost:8000';
+let BASE_URL;
+if (import.meta.env.MODE === 'development') {
+  BASE_URL = import.meta.env.VITE_BASE_URL;
+} else if (import.meta.env.MODE === 'production') {
+  BASE_URL = import.meta.env.VITE_API_URL;
+}
 
 const CitiesContext = createContext();
 

@@ -11,7 +11,7 @@ const citySchema = new mongoose.Schema({
   emoji: String,
   date: String,
   notes: String,
-  position: Object,
+  position: { lat: Number, lng: Number },
 });
 const City = mongoose.model('City', citySchema);
 
