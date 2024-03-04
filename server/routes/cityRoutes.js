@@ -3,7 +3,10 @@ const cityController = require('../controllers/cityController.js');
 
 const router = express.Router();
 
-// router.param('id', cityController.checkId);
+// Aliasing
+router
+  .route('/top-3-western')
+  .get(cityController.aliasTopWestern, cityController.getAllCities);
 
 router
   .route('/')
