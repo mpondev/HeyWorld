@@ -54,29 +54,37 @@ exports.createCity = async (req, res) => {
 };
 
 // (Not implemented yet)
-exports.updateCity = (req, res) => {
-  // const id = req.params.id * 1;
-  // const city = cities.find(el => el.id === id);
-  // res.status(200).json({
-  //   status: 'success',
-  //   data: {
-  //     city: '<Updated city here...>',
-  //   },
-  // });
+exports.updateCity = async (req, res) => {
+  try {
+    const city = await City.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true,
+    });
+    res.status(200).json({
+      status: 'success',
+      data: {
+        city,
+      },
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: 'fail',
+      message: err,
+    });
+  }
 };
 
-exports.deleteCity = (req, res) => {
-  // const id = req.params.id * 1;
-  // const city = cities.find(el => el.id === id);
-  // cities = cities.filter(city => city.id !== id);
-  // fs.writeFile(
-  //   `${__dirname}/../data/cities.json`,
-  //   JSON.stringify(cities),
-  //   err => {
-  //     res.status(204).json({
-  //       status: 'success',
-  //       data: null,
-  //     });
-  //   }
-  // );
+exports.deleteCity = async (req, res) => {
+  try {
+    await City.findByIdAndDelete(req.params.id);
+    res.status(204).json({
+      status: 'success',
+      data: null,
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: 'fail',
+      message: err,
+    });
+  }
 };
