@@ -32,6 +32,10 @@ exports.getCity = catchAsync(async (req, res, next) => {
   // City.findOne({ _id: req.params.id })
   const city = await City.findById(req.params.id);
 
+  if (!city) {
+    return next(new AppError('No city found with that ID', 404));
+  }
+
   res.status(200).json({
     status: 'success',
     data: {
@@ -58,6 +62,10 @@ exports.updateCity = catchAsync(async (req, res, next) => {
     runValidators: true,
   });
 
+  if (!city) {
+    return next(new AppError('No city found with that ID', 404));
+  }
+
   res.status(200).json({
     status: 'success',
     data: {
@@ -67,7 +75,12 @@ exports.updateCity = catchAsync(async (req, res, next) => {
 });
 
 exports.deleteCity = catchAsync(async (req, res) => {
-  await City.findByIdAndDelete(req.params.id);
+  const city = await City.findByIdAndDelete(req.params.id);
+
+  if (!city) {
+    return next(new AppError('No city found with that ID', 404));
+  }
+
   res.status(204).json({
     status: 'success',
     data: null,
