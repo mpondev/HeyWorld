@@ -15,6 +15,13 @@ if (process.env.NODE_ENV === 'development') {
 app.use(express.json());
 app.use(express.static(`${__dirname}/public`));
 
+/// Serve up production assets
+app.use(express.static('../client/dist'));
+const path = require('path');
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'client', 'dist', 'index.html'));
+});
+
 // ROUTES
 app.use('/api/v1/cities', cityRouter);
 app.use('/api/v1/users', userRouter);
