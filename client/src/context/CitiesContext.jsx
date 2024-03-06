@@ -43,7 +43,7 @@ function reducer(state, action) {
       return {
         ...state,
         isLoading: false,
-        cities: state.cities.filter(city => city.id !== action.payload),
+        cities: state.cities.filter(city => city._id !== action.payload),
         currentCity: {},
       };
 
@@ -67,7 +67,8 @@ function CitiesProvider({ children }) {
       try {
         const res = await fetch(`${BASE_URL}/cities`);
         const data = await res.json();
-        dispatch({ type: 'cities/loaded', payload: data });
+        const cities = data.data.cities;
+        dispatch({ type: 'cities/loaded', payload: cities });
       } catch {
         dispatch({
           type: 'rejected',
@@ -86,7 +87,8 @@ function CitiesProvider({ children }) {
       try {
         const res = await fetch(`${BASE_URL}/cities/${id}`);
         const data = await res.json();
-        dispatch({ type: 'city/loaded', payload: data });
+        const city = data.data.city;
+        dispatch({ type: 'city/loaded', payload: city });
       } catch {
         dispatch({
           type: 'rejected',
@@ -109,8 +111,9 @@ function CitiesProvider({ children }) {
         },
       });
       const data = await res.json();
+      const city = data.data.city;
 
-      dispatch({ type: 'city/created', payload: data });
+      dispatch({ type: 'city/created', payload: city });
     } catch {
       dispatch({
         type: 'rejected',
