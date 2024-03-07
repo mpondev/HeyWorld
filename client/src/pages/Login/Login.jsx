@@ -9,7 +9,7 @@ import styles from './Login.module.css';
 
 export default function Login() {
   // Pre-filled for dev purposes
-  const [email, setEmail] = useState('jack@example.com');
+  const [email, setEmail] = useState('jack@heyworld.com');
   const [password, setPassword] = useState('qwerty');
 
   const { isAuthenticated, login } = useAuth();
