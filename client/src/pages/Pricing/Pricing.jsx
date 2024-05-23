@@ -9,7 +9,7 @@ function Pricing() {
       <PageNav />
 
       <section>
-        <div>
+        <div className={styles['wrapper-text']}>
           <h2>
             Simple pricing. <br /> Just $9/month.
           </h2>
@@ -21,7 +21,9 @@ function Pricing() {
           </p>
         </div>
 
-        <img src="img-2.webp" alt="Skyscrapper" />
+        <div className={styles['wrapper-img']}>
+          <img src="img-2.webp" alt="Skyscrapper" />
+        </div>
       </section>
     </main>
   );

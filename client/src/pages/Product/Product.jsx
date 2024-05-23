@@ -8,8 +8,10 @@ function Product() {
       <PageNav />
 
       <section>
-        <img src="img-1.webp" alt="mountains with lake" />
-        <div>
+        <div className={styles['wrapper-img']}>
+          <img src="img-1.webp" alt="mountains with lake" />
+        </div>
+        <div className={styles['wrapper-text']}>
           <h2>About HeyWorld</h2>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo est

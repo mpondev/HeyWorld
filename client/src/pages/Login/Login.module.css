@@ -1,8 +1,22 @@
 .login {
+  height: calc(100vh - 5rem);
   margin: 2.5rem;
   padding: 2.5rem 5rem;
   background-color: var(--color-dark--1);
-  min-height: calc(100vh - 5rem);
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+
+  @media screen and (max-width: 600px) {
+    height: calc(100vh - 3rem);
+    margin: 1.5rem;
+  }
+
+  @media screen and (max-width: 500px) {
+    height: 100vh;
+    margin: 0;
+    padding: 1.5rem 3rem;
+  }
 }
 
 .form {
@@ -17,6 +31,18 @@
   /* Different from other form */
   width: 48rem;
   margin: 8rem auto;
+
+  @media screen and (max-width: 650px) {
+    width: 40rem;
+  }
+
+  @media screen and (max-width: 550px) {
+    width: 35rem;
+  }
+
+  @media screen and (max-width: 500px) {
+    width: 30rem;
+  }
 }
 
 .row {

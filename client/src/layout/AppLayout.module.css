@@ -4,4 +4,12 @@
   overscroll-behavior-y: none;
   display: flex;
   position: relative;
+
+  @media screen and (max-width: 1000px) {
+    flex-direction: column;
+  }
+
+  @media screen and (max-width: 600px) {
+    padding: 0;
+  }
 }
